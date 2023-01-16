@@ -1,0 +1,46 @@
+plugins {
+	id 'org.springframework.boot' version '2.5.3'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'if'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation group: 'io.springfox', name: 'springfox-swagger2', version: '3.0.0'
+	implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
+	implementation 'org.modelmapper:modelmapper:2.1.1'
+	implementation 'javax.validation:validation-api:2.0.0.Final'
+	implementation 'org.springframework.boot:spring-boot-starter-security:2.4.5'
+	implementation 'com.auth0:java-jwt:3.16.0'
+	implementation 'org.json:json:20180813'
+	compileOnly 'org.projectlombok:lombok'
+	runtimeOnly 'mysql:mysql-connector-java'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.mockito:mockito-core:3.9.0'
+	testImplementation 'junit:junit:4.13'
+}
+
+test {
+	useJUnit()
+}
+
+bootRun {
+	args += '--server.port=8888'
+}
